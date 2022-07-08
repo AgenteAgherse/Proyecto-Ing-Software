@@ -41,6 +41,11 @@ public class VentanaLogin extends javax.swing.JFrame {
         jPasswordField1.setText("jPasswordField1");
 
         jButton1.setText("Entrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
         jLabel1.setText("Registrarse");
@@ -95,9 +100,18 @@ public class VentanaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        VentanaRegistro registro = new VentanaRegistro(this, false);
+        VentanaRegistro registro = new VentanaRegistro(this, true);
+        this.setVisible(false);
         registro.setVisible(true);
+        this.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        VentanaPrincipal vPrincipal = new VentanaPrincipal(this, true);
+        this.setVisible(false);
+        vPrincipal.setVisible(true);
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
