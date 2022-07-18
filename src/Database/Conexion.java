@@ -1,0 +1,26 @@
+package Database;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Conexion{
+    
+    public static Connection Conectar() {
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con=DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/manejocultivos","root","toor");
+            Statement stmt=con.createStatement();  
+            ResultSet rs=stmt.executeQuery("show databases;");
+            return con;
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }  
+}

@@ -5,10 +5,11 @@
  */
 package Ventanas;
 
-import Ventanas.Paneles.VentanaPrincipal.AddAgenda;
-import Ventanas.Paneles.VentanaPrincipal.AddRegister;
-import Ventanas.Paneles.VentanaPrincipal.ShowAgendas;
-import Ventanas.Paneles.VentanaPrincipal.ShowRegisters;
+import Entidades.Usuario;
+import Ventanas.Paneles.Paneles.ShowRegisters;
+import Ventanas.Paneles.Paneles.ShowAgendas;
+import Ventanas.Paneles.Paneles.AddAgenda;
+import Ventanas.Paneles.Paneles.AddRegister;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 
@@ -18,13 +19,12 @@ import javax.swing.JOptionPane;
  */
 public class VentanaPrincipal extends javax.swing.JDialog {
 
-    /**
-     * Creates new form VentanaPrincipal
-     */
-    public VentanaPrincipal(java.awt.Frame parent, boolean modal) {
+    Usuario usuarioIngresado;
+    
+    public VentanaPrincipal(java.awt.Frame parent, boolean modal, Usuario usuarioIngresado) {
         super(parent, modal);
         initComponents();
-        
+        this.usuarioIngresado = usuarioIngresado;
         //Valores Ventana
         setLocationRelativeTo(null);
         setResizable(false);
@@ -233,22 +233,22 @@ public class VentanaPrincipal extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        ShowAgendas nuevaVentana = new ShowAgendas();
+        ShowAgendas nuevaVentana = new ShowAgendas(this.usuarioIngresado);
         agregarPanel(nuevaVentana);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        AddAgenda nuevaVentana = new AddAgenda();
-        agregarPanel(new AddAgenda());
+        AddAgenda nuevaVentana = new AddAgenda(this.usuarioIngresado);
+        agregarPanel(nuevaVentana);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        AddRegister nuevaVentana = new AddRegister();
+        AddRegister nuevaVentana = new AddRegister(this.usuarioIngresado);
         agregarPanel(nuevaVentana);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        ShowRegisters nuevaVentana = new ShowRegisters();
+        ShowRegisters nuevaVentana = new ShowRegisters(this.usuarioIngresado);
         agregarPanel(nuevaVentana);
     }//GEN-LAST:event_jLabel5MouseClicked
 
@@ -282,7 +282,7 @@ public class VentanaPrincipal extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaPrincipal dialog = new VentanaPrincipal(new javax.swing.JFrame(), true);
+                VentanaPrincipal dialog = new VentanaPrincipal(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
